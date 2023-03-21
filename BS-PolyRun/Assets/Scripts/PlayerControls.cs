@@ -92,13 +92,16 @@ public class PlayerControls : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision){
         //If triggers tag equals coin
         if(collision.tag == "Coin"){
+            //Call IncrementScore from
+            //Game Controller
+            GameObject.Find("GameController").GetComponent<GameController>().IncrementScore();
             //Destroy object
             Destroy(collision.gameObject);
         }
     }
 
     void GameOver(){
-        //Game is at a stopping state
-        Time.timeScale = 0; 
+        //Game Over function is called from the game manager
+        GameObject.Find("GameController").GetComponent<GameController>().GameOver();
     }
 }
